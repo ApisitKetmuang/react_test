@@ -1,19 +1,18 @@
 import { Routes, Route} from "react-router-dom";
-import './App.css';
-import Users from './Users';
-import UserCreate from "./UserCreate";
-import UserEdit from "./UserEdit";
-
+import CreateDraft from "./CreateDraft";
+import EditePost from "./EditePost";
+import CardDraft from "./CardDraft";
+import CardPost from "./CardPost";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Users />} />
-        <Route path="create_draft" element={<UserCreate />} />
-        <Route path="edit/:id" element={<UserEdit />} />
+        <Route path="/" element={<CardPost />} />
+        <Route path="draft" element={<CardDraft />} />
+        <Route path="create_draft" element={<CreateDraft />} />
+        <Route path="edit/:id" element={<EditePost />} />
       </Routes>
-      
     </div>
   );
 }
