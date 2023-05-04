@@ -17,7 +17,6 @@ export default function UserEdit() {
 
     var raw = JSON.stringify({
       content: content,
-      published: false,
       title: title,
     });
 
@@ -35,6 +34,7 @@ export default function UserEdit() {
     alert("Update data Success :)");
     window.location.href = "/";
   };
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 

@@ -31,7 +31,11 @@ export default function Users() {
   };
 
   return (
-    <Container maxWidth="md" sx={{ padding: 4 }} style={{ backgroundColor: amber[300] }}>
+    <Container
+      maxWidth="md"
+      sx={{ padding: 4 }}
+      style={{ backgroundColor: amber[300] }}
+    >
       <Paper sx={{ padding: 2 }} style={{ backgroundColor: grey[200] }}>
         <Box display="flex">
           <Box sx={{ flexGrow: 1 }}>
@@ -58,7 +62,7 @@ export default function Users() {
               <Button
                 variant="contained"
                 style={{ color: grey[900], backgroundColor: amber[700] }}
-                sx={{ m : 1}}
+                sx={{ m: 1 }}
               >
                 Create Draft
               </Button>

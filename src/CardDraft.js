@@ -30,6 +30,29 @@ export default function Users() {
     window.location = "/edit/" + id;
   };
 
+  const UserPublish = (id) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      published: true,
+    });
+
+    var requestOptions = {
+      method: "PATCH",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(
+      "http://dev.opensource-technology.com:3000/api/posts/" + id,
+      requestOptions
+    );
+    window.location = "/";
+    UserGet();
+  };
+
   const UserDelete = (id) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -85,7 +108,7 @@ export default function Users() {
               <Button
                 variant="contained"
                 style={{ color: grey[900], backgroundColor: amber[700] }}
-                sx={{ m : 1}}
+                sx={{ m: 1 }}
               >
                 Create Draft
               </Button>
@@ -122,12 +145,18 @@ export default function Users() {
               >
                 Edit
               </Button>
-              {/* <Button variant="contained">
-              Published
-            </Button> */}
+
               <Button
                 variant="contained"
                 style={{ color: grey[900], backgroundColor: amber[400] }}
+                onClick={() => UserPublish(note.id)}
+              >
+                Published
+              </Button>
+
+              <Button
+                variant="contained"
+                style={{ color: grey[900], backgroundColor: amber[900] }}
                 onClick={() => UserDelete(note.id)}
               >
                 Delete
