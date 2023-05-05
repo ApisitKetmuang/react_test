@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState , useEffect } from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import { amber, grey } from "@mui/material/colors";
+import { red , green , amber , grey , blue , indigo } from "@mui/material/colors";
 
 export default function Users() {
   const [items, setItems] = useState([]);
@@ -79,16 +79,16 @@ export default function Users() {
     <Container
       maxWidth="md"
       sx={{ padding: 4 }}
-      style={{ backgroundColor: amber[300] }}
+      style={{ backgroundColor: indigo[50] }}
     >
-      <Paper sx={{ padding: 2 }} style={{ backgroundColor: grey[200] }}>
+      <Paper sx={{ padding: 2 }} style={{ backgroundColor: indigo[200] }}>
         <Box display="flex">
           <Box sx={{ flexGrow: 1 }}>
             <Link href="/" underline="none">
               <Button
                 sx={{ m: 1 }}
                 variant="contained"
-                style={{ color: grey[900], backgroundColor: amber[300] }}
+                style={{ color: grey[900], backgroundColor: amber[400] }}
               >
                 Post
               </Button>
@@ -96,7 +96,7 @@ export default function Users() {
             <Link href="draft" underline="none">
               <Button
                 variant="contained"
-                style={{ color: grey[900], backgroundColor: amber[300] }}
+                style={{ color: grey[900], backgroundColor: amber[400] }}
               >
                 Draft
               </Button>
@@ -115,10 +115,11 @@ export default function Users() {
             </Link>
           </Box>
         </Box>
+
         {items.map((note) => (
           <Card
             sx={{ m: 2, maxWidth: 780 }}
-            style={{ backgroundColor: amber[50] }}
+            style={{ backgroundColor: amber[50] }} // การ์ด
           >
             <CardContent>
               <Typography variant="h5">{note.title}</Typography>
@@ -148,7 +149,7 @@ export default function Users() {
 
               <Button
                 variant="contained"
-                style={{ color: grey[900], backgroundColor: amber[400] }}
+                style={{ color: grey[900], backgroundColor: green[300] }}
                 onClick={() => UserPublish(note.id)}
               >
                 Published
@@ -156,7 +157,7 @@ export default function Users() {
 
               <Button
                 variant="contained"
-                style={{ color: grey[900], backgroundColor: amber[900] }}
+                style={{ color: grey[900], backgroundColor: red['A200'] }}
                 onClick={() => UserDelete(note.id)}
               >
                 Delete

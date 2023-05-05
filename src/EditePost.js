@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Card, Grid, Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useParams } from "react-router-dom";
 import Paper from "@mui/material/Paper";
-import { amber , grey } from '@mui/material/colors';
+import { red , amber , grey } from '@mui/material/colors';
 
 export default function UserEdit() {
   const { id } = useParams();
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    UserGet();
+  }, []);
+
+  const UserGet = () => {
+    fetch("http://dev.opensource-technology.com:3000/api/posts/draft?page=1")
+      .then((res) => res.json())
+      .then((result) => {
+        setItems(result.posts);
+      });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -38,6 +51,28 @@ export default function UserEdit() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  const UserDelete = (id) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      id: id,
+    });
+
+    var requestOptions = {
+      method: "DELETE",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch(
+      "http://dev.opensource-technology.com:3000/api/posts/" + id,
+      requestOptions
+    );
+    UserGet();
+  };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -46,7 +81,9 @@ export default function UserEdit() {
           <Typography align="center" variant="h3" gutterBottom >
             Edit Post
           </Typography>
-          <form onSubmit={handleSubmit}>
+          
+          <form onSubmit={handleSubmit}>   
+
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
@@ -74,14 +111,30 @@ export default function UserEdit() {
                 </Button>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Button href="/" variant="contained" fullWidth style={{ color:grey[900] , backgroundColor: amber[400] }}>
+                <Button href="/" variant="contained" fullWidth style={{ color:grey[900] , backgroundColor: red['A200'] }}>
                   Cancel
                 </Button>
               </Grid>
+
+              <Grid item xs={12}>
+                <Button
+                variant="contained" 
+                fullWidth 
+                // onClick={() => UserDelete(note.id)}
+                style={{ color:grey[900] , backgroundColor: red['A400'] }}
+                >
+                  Delete
+                </Button>
+              </Grid>
             </Grid>
+
           </form>
+
+ 
         </Paper>
+
       </Container>
+
     </React.Fragment>
   );
 }

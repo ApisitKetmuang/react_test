@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
-import { amber, grey } from "@mui/material/colors";
+import { amber, grey , indigo , lightBlue , teal } from "@mui/material/colors";
 
 export default function Users() {
   const [items, setItems] = useState([]);
@@ -34,16 +34,16 @@ export default function Users() {
     <Container
       maxWidth="md"
       sx={{ padding: 4 }}
-      style={{ backgroundColor: amber[300] }}
+      style={{ backgroundColor: indigo[50] }}
     >
-      <Paper sx={{ padding: 2 }} style={{ backgroundColor: grey[200] }}>
+      <Paper sx={{ padding: 2 }} style={{ backgroundColor: indigo[200] }}>
         <Box display="flex">
           <Box sx={{ flexGrow: 1 }}>
             <Link href="/" underline="none">
               <Button
                 sx={{ m: 1 }}
                 variant="contained"
-                style={{ color: grey[900], backgroundColor: amber[300] }}
+                style={{ color: grey[900], backgroundColor: amber[400] }}
               >
                 Post
               </Button>
@@ -51,7 +51,7 @@ export default function Users() {
             <Link href="draft" underline="none">
               <Button
                 variant="contained"
-                style={{ color: grey[900], backgroundColor: amber[300] }}
+                style={{ color: grey[900], backgroundColor: amber[400] }}
               >
                 Draft
               </Button>
